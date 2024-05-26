@@ -1,14 +1,11 @@
-# import openai
 import os
-from utils import syntactic_check,repair
-
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_openai import ChatOpenAI
 from config import API_KEY
+from utils import syntactic_check,repair
 
 chat = ChatOpenAI(model='gpt-3.5-turbo', temperature=0.2, api_key=API_KEY)
-
 
 prompt = ChatPromptTemplate.from_messages(
     [
@@ -46,31 +43,19 @@ number_to_word = {
     9: 'ninth'
 }
 
-# def generate_test():
-#     chat_completion = client.chat.completions.create(
-#         messages=[
-#             {
-#                 "role": "user",
-#                 "content": "你好",
-#             }
-#         ],
-#         model="gpt-3.5-turbo",
-#     )
-#     print(chat_completion.choices[0].message.content)
-
 
 if __name__ == '__main__':
     project_path = r"projectsUT/Triangle"
-    source_code_path = project_path + '/' + 'src/main/java/net/mooctest'
-    # print(source_code_path)
+    source_code_path = os.path.join(project_path, 'src/main/java/net/mooctest')
+    print(source_code_path)
     source_code_list = os.listdir(source_code_path)
     # generate_test()
-    print(source_code_list[0])
+    print(source_code_list)
     # 将所有源代码发送给GPT
     for i in range(len(source_code_list)):
         with open(source_code_path + '/' + source_code_list[i], "r") as f:
             source_code = f.read()
-        content = f"The {number_to_word.get(i + 1)} java class is as follow: {source_code}"
+        content = f"The {number_to_word.get(i + 1)} java class is as follow:\n {source_code}"
         messages.append(HumanMessage(content=content))
         print(f'User: {content}')
 
