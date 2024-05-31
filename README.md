@@ -5,7 +5,11 @@
 
 ## 如何运行
 1. 创建python环境，使用requirements.txt安装依赖库
+
+   ```pip install -r requirements.txt```
 2. 在config.py中设置API_KEY 
+   API_KEY为GPT的API KEY，首先需要有GPT账号，然后在官网申请API KEY，详见：
+   https://platform.openai.com/account/api-keys
 3. run gpt_test_generation.py，在命令行中可以打印gpt返回且经过修复的用例
 
 ## 项目结构
