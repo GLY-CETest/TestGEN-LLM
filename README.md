@@ -4,7 +4,7 @@
 该项目为python项目，构建GPT对话，获得测试用例。
 
 ## 如何运行
-1. 创建python环境，使用requirements.txt安装依赖库
+1. 创建python环境，我当前python版本为3.9，激活python虚拟环境后，使用命令行，cd文件路径至当前项目的root目录下，使用requirements.txt安装依赖库
 
    ```pip install -r requirements.txt```
 2. 在config.py中设置API_KEY 
